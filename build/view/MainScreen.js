@@ -19,23 +19,27 @@ class MainScreen {
     mainMenu() {
         let continuing = true;
         while (continuing) {
-            let choice = parseInt(this.prompt("Escolha: \n1. Criar conta \n2. Login \n3.Sair \n"));
+            let choice = parseInt(this.prompt("Select: \n1. Register \n2. Login \n3. List \n4. Quit \n"));
             switch (choice) {
                 case 1:
                     this.userRegister.addUser();
                     break;
                 case 2:
                     this.userLogin.enterLogin();
+                    continuing = false;
                     break;
                 case 3:
+                    this.control.db.listAll();
+                    break;
+                case 4:
                     continuing = false;
                     break;
                 default:
-                    console.log("Valor inválido.");
+                    console.log("Invalid");
                     break;
             }
         }
-        console.log("Saiu");
+        console.log("Exit");
     }
 }
 exports.default = MainScreen;
