@@ -6,18 +6,21 @@ export default class Database {
     private acessBalance!: number;
     private accessName!: string;
     private accessSocialNumber!: number;
+    private account2 !: number;
 
     
-//Adicionando ao banco de dados o usuário.
+    //Adicionando ao banco de dados o usuário.
     public addNewUser(user: User){
         this.userDb.push(user);
         console.log("\nRegistrado com sucesso!");
     }
 
+    //Informações do usuário
     public getUser(index: number){
         return this.userDb[index];
     }
 
+    //Valores da conta acessada no login
     public getAcessBalance(){
         return this.acessBalance;
     }
@@ -34,7 +37,16 @@ export default class Database {
         return this.accessSocialNumber;
     }
 
+    //Segunda conta na transferêrencia (Tem o valor do balance nele)
+    public getAccount2(){
+        return this.account2;
+    }
 
+    public setAccount2(newBalance: number){
+        this.account2 = newBalance
+    }
+
+    //Listar todas as contas
     public listAll(){
         for (let index = 0; index < this.userDb.length; index++) {
             const element = this.userDb[index];
@@ -62,6 +74,7 @@ export default class Database {
        
     }
 
+    //Muda os valores que foram alterados pelo Withdraw e deposit no Banco de dados
     public changeDb(cpf: number){
         for(let index = 0; index < this.userDb.length; index++){
             const element = this.userDb[index];
@@ -71,4 +84,30 @@ export default class Database {
     }
 }
 
+    //Recupero os valores da conta que será tranferida  (recupero apenas o Balance no momento).
+    public getAccountToTransference(cpf: number){
+        for(let index = 0; index < this.userDb.length; index++){
+            const element = this.userDb[index];
+            if(cpf == element.getSocialNumber()){
+                this.account2 = element.getBalance();
+            }
+        }
+    }
+
+    public changeTransferenceDb(cpf: number, cpf2:number){
+        //Muda valor na primeira conta
+        for(let index = 0; index < this.userDb.length; index++){
+            const element = this.userDb[index];
+            if(cpf == element.getSocialNumber()){
+                element.setBalance(this.acessBalance);
+            }
+    }
+            //Muda valor na segunda conta
+            for(let index = 0; index < this.userDb.length; index++){
+                const element = this.userDb[index];
+                if(cpf2 == element.getSocialNumber()){
+                    element.setBalance(this.account2);
+                }
+        }
+    }
 }
