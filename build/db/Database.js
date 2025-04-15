@@ -54,5 +54,13 @@ class Database {
             this.acessKey = true;
         }
     }
+    changeDb(cpf) {
+        for (let index = 0; index < this.userDb.length; index++) {
+            const element = this.userDb[index];
+            if (cpf == element.getSocialNumber()) {
+                element.setBalance(this.acessBalance);
+            }
+        }
+    }
 }
 exports.default = Database;

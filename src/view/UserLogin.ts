@@ -39,7 +39,7 @@ export default class UserLogin {
 
 
                     case 5:
-    
+                        this.control.db.changeDb(nCpf);
                         continuing = false;
                         break;
                 

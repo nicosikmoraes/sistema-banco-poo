@@ -31,6 +31,7 @@ class UserLogin {
                         console.log(this.control.db.getAcessBalance());
                         break;
                     case 5:
+                        this.control.db.changeDb(nCpf);
                         continuing = false;
                         break;
                     default:

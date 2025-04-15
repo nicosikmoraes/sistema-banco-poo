@@ -26,7 +26,6 @@ class MainScreen {
                     break;
                 case 2:
                     this.userLogin.enterLogin();
-                    continuing = false;
                     break;
                 case 3:
                     this.control.db.listAll();

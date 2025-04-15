@@ -32,7 +32,6 @@ export default class MainScreen {
 
                     case 2:
                             this.userLogin.enterLogin()
-                            continuing = false;
                         break;
 
                     case 3:
