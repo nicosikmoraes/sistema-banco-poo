@@ -4,6 +4,8 @@ export default class Database {
     private userDb: User[] = [];
     public acessKey: boolean = false;
     private acessBalance!: number;
+    private accessName!: string;
+    private accessSocialNumber!: number;
 
     
 //Adicionando ao banco de dados o usuário.
@@ -20,6 +22,19 @@ export default class Database {
         return this.acessBalance;
     }
 
+    public setAcessBalance(newBalance: number){
+        this.acessBalance = newBalance
+    }
+
+    public getAcessName(){
+        return this.accessName;
+    }
+
+    public getAcessSocialNumber(){
+        return this.accessSocialNumber;
+    }
+
+
     public listAll(){
         for (let index = 0; index < this.userDb.length; index++) {
             const element = this.userDb[index];
@@ -35,6 +50,8 @@ export default class Database {
             if(cpf == element.getSocialNumber()){
                     console.log(`\n ${element.getName()} \n ${element.getBalance()} \n ${element.getSocialNumber()}`)
                     this.acessBalance = element.getBalance();
+                    this.accessName = element.getName();
+                    this.accessSocialNumber = element.getSocialNumber();
             }else{y++;};
         }
             if(y >= this.userDb.length){
@@ -44,4 +61,5 @@ export default class Database {
             }
        
     }
+
 }

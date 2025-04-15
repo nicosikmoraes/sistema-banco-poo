@@ -16,6 +16,15 @@ class Database {
     getAcessBalance() {
         return this.acessBalance;
     }
+    setAcessBalance(newBalance) {
+        this.acessBalance = newBalance;
+    }
+    getAcessName() {
+        return this.accessName;
+    }
+    getAcessSocialNumber() {
+        return this.accessSocialNumber;
+    }
     listAll() {
         for (let index = 0; index < this.userDb.length; index++) {
             const element = this.userDb[index];
@@ -30,6 +39,8 @@ class Database {
             if (cpf == element.getSocialNumber()) {
                 console.log(`\n ${element.getName()} \n ${element.getBalance()} \n ${element.getSocialNumber()}`);
                 this.acessBalance = element.getBalance();
+                this.accessName = element.getName();
+                this.accessSocialNumber = element.getSocialNumber();
             }
             else {
                 y++;
