@@ -11,7 +11,7 @@ Updates coming soon...
   - Open a terminal in your operation system or on VS Code pointing to the root project
   - Install the dependecies
       - `npm i`
-  - Enter at build
+  - Enter in the build paste
       - `cd build`
   - Start the application
       - `node index.js`
