@@ -3,12 +3,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 class Database {
     constructor() {
         this.userDb = [];
+        this.accountDb = [];
         this.acessKey = false;
     }
     //Adicionando ao banco de dados o usuário.
     addNewUser(user) {
         this.userDb.push(user);
         console.log("\nRegistrado com sucesso!");
+    }
+    //Adicionando item ao banco de dados da conta (balance)
+    addNewAcount(conta) {
+        this.accountDb.push(conta);
     }
     //Informações do usuário
     getUser(index) {
@@ -36,20 +41,22 @@ class Database {
     }
     //Listar todas as contas
     listAll() {
-        for (let index = 0; index < this.userDb.length; index++) {
-            const element = this.userDb[index];
-            console.log(`\n${element.getName()} \n${element.getSocialNumber()} \n${element.getBalance()}`);
+        for (let index = 0; index < this.accountDb.length; index++) {
+            const element = this.accountDb[index];
+            const element2 = this.userDb[index];
+            console.log(`\n${element2.getName()} \n${element.getSocialNumber()} \n${element.getBalance()}`);
         }
     }
     //Quando for logar e quiser ver o saldo.
     listBalance(cpf) {
         let y = 0;
-        for (let index = 0; index < this.userDb.length; index++) {
-            const element = this.userDb[index];
+        for (let index = 0; index < this.accountDb.length; index++) {
+            const element = this.accountDb[index];
+            const element2 = this.userDb[index];
             if (cpf == element.getSocialNumber()) {
                 console.log(`\n ${element.getName()} \n ${element.getBalance()} \n ${element.getSocialNumber()}`);
                 this.acessBalance = element.getBalance();
-                this.accessName = element.getName();
+                this.accessName = element2.getName();
                 this.accessSocialNumber = element.getSocialNumber();
             }
             else {
@@ -57,7 +64,7 @@ class Database {
             }
             ;
         }
-        if (y >= this.userDb.length) {
+        if (y >= this.accountDb.length) {
             console.log("Not found");
         }
         else {
@@ -66,8 +73,8 @@ class Database {
     }
     //Muda os valores que foram alterados pelo Withdraw e deposit no Banco de dados
     changeDb(cpf) {
-        for (let index = 0; index < this.userDb.length; index++) {
-            const element = this.userDb[index];
+        for (let index = 0; index < this.accountDb.length; index++) {
+            const element = this.accountDb[index];
             if (cpf == element.getSocialNumber()) {
                 element.setBalance(this.acessBalance);
             }
@@ -75,8 +82,8 @@ class Database {
     }
     //Recupero os valores da conta que será tranferida  (recupero apenas o Balance no momento).
     getAccountToTransference(cpf) {
-        for (let index = 0; index < this.userDb.length; index++) {
-            const element = this.userDb[index];
+        for (let index = 0; index < this.accountDb.length; index++) {
+            const element = this.accountDb[index];
             if (cpf == element.getSocialNumber()) {
                 this.account2 = element.getBalance();
             }
@@ -84,15 +91,15 @@ class Database {
     }
     changeTransferenceDb(cpf, cpf2) {
         //Muda valor na primeira conta
-        for (let index = 0; index < this.userDb.length; index++) {
-            const element = this.userDb[index];
+        for (let index = 0; index < this.accountDb.length; index++) {
+            const element = this.accountDb[index];
             if (cpf == element.getSocialNumber()) {
                 element.setBalance(this.acessBalance);
             }
         }
         //Muda valor na segunda conta
-        for (let index = 0; index < this.userDb.length; index++) {
-            const element = this.userDb[index];
+        for (let index = 0; index < this.accountDb.length; index++) {
+            const element = this.accountDb[index];
             if (cpf2 == element.getSocialNumber()) {
                 element.setBalance(this.account2);
             }

@@ -12,6 +12,7 @@ class UserRegister {
     addUser() {
         //Esse user é basicamente as informações do meu User.ts
         let user = this.control.getNewUser();
+        let conta = this.control.getNewAccount();
         //Pedir ao usuário seus dados de registro.
         let name = this.prompt("\nName:\n");
         let SocialNumber = this.prompt("\nSocial number:\n", "");
@@ -21,10 +22,13 @@ class UserRegister {
         //Populando o objeto.
         user.setName(name);
         user.setSocialNumber(NSocialNumber);
-        user.setBalance(NBalance);
+        conta.setSocialNumber(NSocialNumber);
+        conta.setBalance(NBalance);
         //Armazenar no banco de dados.
         this.control.db.addNewUser(user);
+        this.control.db.addNewAcount(conta);
         console.log(user);
+        console.log(conta);
     }
 }
 exports.default = UserRegister;

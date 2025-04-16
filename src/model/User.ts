@@ -1,12 +1,7 @@
 export default class User {
     private  name!: string;
-    private  socialNumber!: number;
+    protected  socialNumber!: number;
 
-   // constructor(name: string, socialNumber: number, balance: number){
-   //     this.name = name;
-   //     this.socialNumber = socialNumber;
-   //     this.balance = balance;
-   // }
 
     public getName(){
         return this.name;

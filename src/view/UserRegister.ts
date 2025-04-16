@@ -24,6 +24,7 @@ export default class UserRegister {
         //Populando o objeto.
         user.setName(name);
         user.setSocialNumber(NSocialNumber);
+        conta.setSocialNumber(NSocialNumber);
         conta.setBalance(NBalance);
         //Armazenar no banco de dados.
         this.control.db.addNewUser(user);

@@ -17,7 +17,6 @@ export default class Deposit{
     public depositMoney(){
         let amount:string = this.prompt("\nHow much do you want to deposit?");
         let nAmount: number = Number(amount);
-        this.control.db.setAcessBalance(this.control.db.getAcessBalance() + nAmount);
-        console.log("Balance:" + this.control.db.getAcessBalance())
+        this.control.operations.deposit(nAmount);
     }
 }

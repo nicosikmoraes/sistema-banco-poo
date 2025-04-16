@@ -17,8 +17,7 @@ export default class Withdraw {
     public withdrawMoney(){
         let amount:string = this.prompt("\nHow much do you want to withdraw?");
         let nAmount: number = Number(amount);
-        this.control.db.setAcessBalance(this.control.db.getAcessBalance() - nAmount);
-        console.log("Balance:" + this.control.db.getAcessBalance())
+        this.control.operations.withdraw(nAmount)
     }
 }
 

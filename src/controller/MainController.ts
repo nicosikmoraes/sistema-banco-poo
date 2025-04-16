@@ -6,7 +6,7 @@ import MainScreen from "../view/MainScreen";
 
 export default class MainController {
     public db: Database = new Database();
-    public operations: Operations = new Operations();
+    public operations: Operations = new Operations(this);
 
     constructor(){
         new MainScreen(this);   //Estou passando um parametro que é p próprio MainCotroller para o control do MainScreen.
