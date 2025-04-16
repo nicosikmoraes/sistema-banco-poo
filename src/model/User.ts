@@ -1,7 +1,6 @@
 export default class User {
     private  name!: string;
     private  socialNumber!: number;
-    private  balance!: number;
 
    // constructor(name: string, socialNumber: number, balance: number){
    //     this.name = name;
@@ -26,12 +25,4 @@ export default class User {
         this.socialNumber = socialNumber;
     }
 
-
-    public getBalance(){
-        return this.balance;
-    }
-
-    public setBalance(balance: number){
-        this.balance = balance;
-    }
 }

@@ -1,6 +1,7 @@
 import PromptSync from "prompt-sync";
 import MainController from "../controller/MainController";
 import User from "../model/User";
+import Conta from "../model/Conta";
 
 export default class UserRegister {
     private prompt = PromptSync();
@@ -13,6 +14,7 @@ export default class UserRegister {
     public addUser(){
         //Esse user é basicamente as informações do meu User.ts
         let user: User = this.control.getNewUser();
+        let conta: Conta = this.control.getNewAccount();
         //Pedir ao usuário seus dados de registro.
         let name: string = this.prompt("\nName:\n");
         let SocialNumber: string = this.prompt("\nSocial number:\n", "");
@@ -22,9 +24,11 @@ export default class UserRegister {
         //Populando o objeto.
         user.setName(name);
         user.setSocialNumber(NSocialNumber);
-        user.setBalance(NBalance);
+        conta.setBalance(NBalance);
         //Armazenar no banco de dados.
-        this.control.db.addNewUser(user)
+        this.control.db.addNewUser(user);
+        this.control.db.addNewAcount(conta);
         console.log(user);
+        console.log(conta);
     }
 }
