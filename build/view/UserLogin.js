@@ -35,7 +35,7 @@ class UserLogin {
                         this.control.db.changeDb(nCpf);
                         break;
                     case 3:
-                        this.transference.transfereceMoney();
+                        this.transference.transferenceChoice();
                         this.control.db.changeTransferenceDb(nCpf, this.transference.getCpf2());
                         break;
                     case 4:
@@ -52,6 +52,7 @@ class UserLogin {
                 }
             }
             console.log("Exit");
+            console.log(this.transference.getCpf2() + " cpf2");
         }
     }
 }

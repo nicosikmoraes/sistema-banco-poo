@@ -11,13 +11,12 @@ export default class UserLogin {
       private withdraw: Withdraw;
       private deposit: Deposit;
       private transference: Transference;
-    
+  
         public constructor(control: MainController){
             this.control = control;
             this.withdraw = new Withdraw(control);
             this.deposit = new Deposit(control);
             this.transference = new Transference(control);
-
         }
     
         public enterLogin(){
@@ -43,7 +42,7 @@ export default class UserLogin {
                         break;
 
                     case 3:
-                            this.transference.transfereceMoney();
+                            this.transference.transferenceChoice();
                             this.control.db.changeTransferenceDb(nCpf, this.transference.getCpf2())
                         break;
 
@@ -64,6 +63,7 @@ export default class UserLogin {
                 }
             }
             console.log("Exit")
+            console.log(this.transference.getCpf2() + " cpf2")
         }
         }
 }

@@ -1,30 +1,50 @@
-
 import PromptSync from "prompt-sync";
 import MainController from "../controller/MainController"
+import TransferenceSameBank from "./TransfBank";
+import TransferenceOtherBank from "./TranfOtherBank";
+
 
 export default class Transference {
-        private control: MainController
-        private prompt = PromptSync();
-        private nCpf2!: number;
+        protected control: MainController
+        public prompt = PromptSync();
+        private trasferenceSameBank: TransferenceSameBank
+        private transferenceOtherBank: TransferenceOtherBank;
 
         public constructor(control: MainController){
-            this.control = control
+            this.control = control;
+            this.transferenceOtherBank = new TransferenceOtherBank(control)
+            this.trasferenceSameBank = new TransferenceSameBank(control)
         }
 
         public getCpf2(){
-            return this.nCpf2;
+            return this.trasferenceSameBank.getCpf2();
         }
 
-    public transfereceMoney(){
-        let cpf2: string = this.prompt("Which account do you want to transfer the money?")
-        this.nCpf2 = Number(cpf2)
+        
+    
+        public transferenceChoice(){
+            let continuing: boolean = true;
+            while (continuing) {
 
-        this.control.db.getAccountToTransference(this.nCpf2);
-
-       let amount: string = this.prompt("How much do you want to transfer?")
-       let nAmount: number = Number(amount);
-
-        this.control.operations.transference(nAmount);
-    }
+                let choice = parseInt(this.prompt("\n1. Bank Manco \n2. Other bank"));
+                switch (choice) {
+                    case 1:
+                        this.trasferenceSameBank.transferenceMoney();
+                    continuing = false;
+                        break;
+                            
+                    case 2:
+                        this.transferenceOtherBank.transferenceMoney();
+                    continuing = false;
+                        break;
+                
+                    default: 
+                        console.log("Invalid.")
+                        break;
+                }
+             }
+             console.log(this.getCpf2())
+        }
+    
 
 }

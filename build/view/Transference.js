@@ -4,21 +4,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
+const TransfBank_1 = __importDefault(require("./TransfBank"));
+const TranfOtherBank_1 = __importDefault(require("./TranfOtherBank"));
 class Transference {
     constructor(control) {
         this.prompt = (0, prompt_sync_1.default)();
         this.control = control;
+        this.transferenceOtherBank = new TranfOtherBank_1.default(control);
+        this.trasferenceSameBank = new TransfBank_1.default(control);
     }
     getCpf2() {
-        return this.nCpf2;
+        return this.trasferenceSameBank.getCpf2();
     }
-    transfereceMoney() {
-        let cpf2 = this.prompt("Which account do you want to transfer the money?");
-        this.nCpf2 = Number(cpf2);
-        this.control.db.getAccountToTransference(this.nCpf2);
-        let amount = this.prompt("How much do you want to transfer?");
-        let nAmount = Number(amount);
-        this.control.operations.transference(nAmount);
+    transferenceChoice() {
+        let continuing = true;
+        while (continuing) {
+            let choice = parseInt(this.prompt("\n1. Bank Manco \n2. Other bank"));
+            switch (choice) {
+                case 1:
+                    this.trasferenceSameBank.transferenceMoney();
+                    continuing = false;
+                    break;
+                case 2:
+                    this.transferenceOtherBank.transferenceMoney();
+                    continuing = false;
+                    break;
+                default:
+                    console.log("Invalid.");
+                    break;
+            }
+        }
+        console.log(this.getCpf2());
     }
 }
 exports.default = Transference;

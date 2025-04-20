@@ -89,6 +89,7 @@ class Database {
             }
         }
     }
+    //Mudar os valores da tranferência no banco de dados.
     changeTransferenceDb(cpf, cpf2) {
         //Muda valor na primeira conta
         for (let index = 0; index < this.accountDb.length; index++) {
