@@ -20,7 +20,7 @@ export default class TransferenceOtherBank extends TransferenceSameBank {
        let amount: string = this.prompt("How much do you want to transfer?");
        let nAmount: number = Number(amount);
 
-        this.control.operations.transference(nAmount);
+        this.control.operations.withdraw(nAmount);
         this.checkStringNumber(ncpf, name);
     }
 
@@ -33,7 +33,7 @@ export default class TransferenceOtherBank extends TransferenceSameBank {
         }
     }
 
-    //Confirmação da tran
+    //Confirmação da sobrecaga
     cpfOrName(cpf: number,): void;
     cpfOrName( name: string): void;
 

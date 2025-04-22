@@ -44,6 +44,8 @@ export default class UserLogin {
                     case 3:
                             this.transference.transferenceChoice();
                             this.control.db.changeTransferenceDb(nCpf, this.transference.getCpf2())
+
+                            
                         break;
 
                     case 4:

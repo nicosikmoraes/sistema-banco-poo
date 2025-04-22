@@ -21,7 +21,6 @@ export default class Transference {
         }
 
         
-    
         public transferenceChoice(){
             let continuing: boolean = true;
             while (continuing) {

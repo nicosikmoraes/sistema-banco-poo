@@ -16,7 +16,7 @@ class TransferenceOtherBank extends TransfBank_1.default {
         let name = this.prompt("If you don't, what is the full name of who you want make the transition?");
         let amount = this.prompt("How much do you want to transfer?");
         let nAmount = Number(amount);
-        this.control.operations.transference(nAmount);
+        this.control.operations.withdraw(nAmount);
         this.checkStringNumber(ncpf, name);
     }
     checkStringNumber(ncpf, name) {

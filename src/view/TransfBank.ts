@@ -14,6 +14,7 @@ export default class TransferenceSameBank {
             public getCpf2(){
                 return this.nCpf2;
             }
+
         
     public transferenceMoney(){
         let cpf2: string = this.prompt("Which account do you want to transfer the money?")
