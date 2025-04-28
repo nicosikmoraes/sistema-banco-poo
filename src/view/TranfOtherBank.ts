@@ -35,7 +35,7 @@ export default class TransferenceOtherBank extends TransferenceSameBank {
 
     //Confirmação da sobrecaga
     cpfOrName(cpf: number,): void;
-    cpfOrName( name: string): void;
+    cpfOrName(name: string): void;
 
     cpfOrName(param: any): void{
         if (typeof param === "number") {
