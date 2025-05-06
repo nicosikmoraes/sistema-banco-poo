@@ -5,19 +5,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const TransfBank_1 = __importDefault(require("./TransfBank"));
 class TransferenceOtherBank extends TransfBank_1.default {
-    constructor(control) {
+    constructor(control, bankInfo) {
         super(control);
+        this.bankInfo = bankInfo;
     }
     //Sobrescrita
     transferenceMoney() {
-        let bankName = this.prompt("What is the name of the bank?");
+        //Injeção de dependências por meio de uma Interface (OtherBank)
+        this.bankInfo.name = this.prompt("What is the name of the bank?");
+        this.bankInfo.money = this.prompt("What is the coin that you want to transfer?");
         let cpf = this.prompt("if you know what is the Social Number of the account?");
-        let ncpf = Number(cpf);
-        let name = this.prompt("If you don't, what is the full name of who you want make the transition?");
+        this.numCpf = Number(cpf);
+        this.name = this.prompt("If you don't, what is the full name of who you want make the transition?");
         let amount = this.prompt("How much do you want to transfer?");
         let nAmount = Number(amount);
         this.control.operations.withdraw(nAmount);
-        this.checkStringNumber(ncpf, name);
+        this.checkStringNumber(this.numCpf, this.name);
     }
     checkStringNumber(ncpf, name) {
         if (ncpf === 0) {
@@ -29,10 +32,10 @@ class TransferenceOtherBank extends TransfBank_1.default {
     }
     cpfOrName(param) {
         if (typeof param === "number") {
-            console.log("Cpf encontrado!");
+            this.control.operations.statusCpf(this.numCpf);
         }
         else if (typeof param === "string") {
-            console.log("Nome encontrado!");
+            this.control.operations.statusName(this.name);
         }
     }
 }

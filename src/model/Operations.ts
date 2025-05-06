@@ -3,9 +3,11 @@ import MainController from "../controller/MainController";
 
 export default class Operations {
     private control: MainController;
+    private status: StatusTransference;
 
-    public constructor(control: MainController){
-        this.control = control
+    public constructor(control: MainController, status: StatusTransference){
+        this.control = control;
+        this.status = status;
     }
 
 
@@ -25,5 +27,23 @@ export default class Operations {
         this.control.db.setAcessBalance(account1 - amount);
         this.control.db.setAccount2(this.control.db.getAccount2() + amount);
 
+    }
+
+    public statusName(name: string){
+        if(name.length > 6){
+            this.status = StatusTransference.Completed
+        }else{
+            this.status = StatusTransference.Processing
+        }
+        console.log(this.status);
+    }
+
+    public statusCpf(cpf: number){
+        if(cpf === 11){
+            this.status = StatusTransference.Completed
+        }else{
+            this.status = StatusTransference.Pendent
+        }
+        console.log(this.status);
     }
 }

@@ -1,27 +1,34 @@
 import MainController from "../controller/MainController";
+import { OtherBank } from "../model/OtherBank";
 import TransferenceSameBank from "./TransfBank";
 
 export default class TransferenceOtherBank extends TransferenceSameBank {
+    private bankInfo: OtherBank;
+    private name!: string
+    private numCpf!: number
 
-    public constructor(control: MainController){
-        super(control)
+    public constructor(control: MainController, bankInfo: OtherBank){
+        super(control); 
+        this.bankInfo = bankInfo
     }
 
     //Sobrescrita
     public transferenceMoney(){
 
-        let bankName: string = this.prompt("What is the name of the bank?");
+        //Injeção de dependências por meio de uma Interface (OtherBank)
+       this.bankInfo.name = this.prompt("What is the name of the bank?");
+       this.bankInfo.money = this.prompt("What is the coin that you want to transfer?");
 
-       let cpf: string = this.prompt("if you know what is the Social Number of the account?")
-       let ncpf = Number(cpf);
+       let cpf: string = this.prompt("if you know what is the Social Number of the account?");
+       this.numCpf = Number(cpf);
        
-       let name: string = this.prompt("If you don't, what is the full name of who you want make the transition?");
+       this.name= this.prompt("If you don't, what is the full name of who you want make the transition?");
 
        let amount: string = this.prompt("How much do you want to transfer?");
        let nAmount: number = Number(amount);
 
         this.control.operations.withdraw(nAmount);
-        this.checkStringNumber(ncpf, name);
+        this.checkStringNumber(this.numCpf, this.name);
     }
 
 
@@ -39,9 +46,9 @@ export default class TransferenceOtherBank extends TransferenceSameBank {
 
     cpfOrName(param: any): void{
         if (typeof param === "number") {
-            console.log("Cpf encontrado!");
+            this.control.operations.statusCpf(this.numCpf);
         }else if(typeof param === "string"){
-            console.log("Nome encontrado!");
+            this.control.operations.statusName(this.name);
         }
     }
 
