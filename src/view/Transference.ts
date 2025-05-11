@@ -2,6 +2,7 @@ import PromptSync from "prompt-sync";
 import MainController from "../controller/MainController"
 import TransferenceSameBank from "./TransfBank";
 import TransferenceOtherBank from "./TranfOtherBank";
+import Message from "../model/Message";
 
 
 export default class Transference {
@@ -9,10 +10,11 @@ export default class Transference {
         public prompt = PromptSync();
         private trasferenceSameBank: TransferenceSameBank
         private transferenceOtherBank: TransferenceOtherBank;
+        public mensagem = new Message;
 
         public constructor(control: MainController){
             this.control = control;
-            this.transferenceOtherBank = new TransferenceOtherBank(control)
+            this.transferenceOtherBank =  new TransferenceOtherBank(control, this.mensagem);
             this.trasferenceSameBank = new TransferenceSameBank(control)
         }
 
@@ -42,7 +44,6 @@ export default class Transference {
                         break;
                 }
              }
-             console.log(this.getCpf2())
         }
     
 

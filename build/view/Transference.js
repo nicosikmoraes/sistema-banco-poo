@@ -6,11 +6,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
 const TransfBank_1 = __importDefault(require("./TransfBank"));
 const TranfOtherBank_1 = __importDefault(require("./TranfOtherBank"));
+const Message_1 = __importDefault(require("../model/Message"));
 class Transference {
     constructor(control) {
         this.prompt = (0, prompt_sync_1.default)();
+        this.mensagem = new Message_1.default;
         this.control = control;
-        this.transferenceOtherBank = new TranfOtherBank_1.default(control);
+        this.transferenceOtherBank = new TranfOtherBank_1.default(control, this.mensagem);
         this.trasferenceSameBank = new TransfBank_1.default(control);
     }
     getCpf2() {
@@ -34,7 +36,6 @@ class Transference {
                     break;
             }
         }
-        console.log(this.getCpf2());
     }
 }
 exports.default = Transference;

@@ -10,7 +10,9 @@
   "description": "",
   "dependencies": {
     "prompt-sync": "^4.2.0",
-    "prompt-sync-history": "^1.0.1"
+    "prompt-sync-history": "^1.0.1",
+    "reflect-metadata": "^0.2.2",
+    "tsyringe": "^4.10.0"
   },
   "devDependencies": {
     "@types/prompt-sync": "^4.2.3"

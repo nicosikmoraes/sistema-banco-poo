@@ -1,4 +1,3 @@
-export interface OtherBank {
-    name: string;
-    money: string;
+export interface IMessageEnd {
+  completedMessage2(nomeBanco: string): void; 
 }

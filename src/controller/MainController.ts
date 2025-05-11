@@ -4,6 +4,7 @@ import Operations from "../model/Operations";
 import User from "../model/User";
 import MainScreen from "../view/MainScreen";
 
+
 export default class MainController {
     public db: Database = new Database();
     public operations: Operations = new Operations(this);
@@ -21,3 +22,4 @@ export default class MainController {
             return new Conta();
     }
 }
+

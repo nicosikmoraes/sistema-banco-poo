@@ -1,13 +1,14 @@
 import MainController from "../controller/MainController";
+import { StatusTransference } from "./StatusEnum";
 
 
-export default class Operations {
+export default class Operations{
     private control: MainController;
-    private status: StatusTransference;
+    private status: StatusTransference = StatusTransference.Pending;;
 
-    public constructor(control: MainController, status: StatusTransference){
+    public constructor(control: MainController){
         this.control = control;
-        this.status = status;
+
     }
 
 
@@ -29,21 +30,35 @@ export default class Operations {
 
     }
 
+    mudaStatus(newStatus: StatusTransference){
+        this.status = newStatus
+    }
+
     public statusName(name: string){
         if(name.length > 6){
-            this.status = StatusTransference.Completed
+            this.mudaStatus(StatusTransference.Completed)
+            console.log(this.status, ",nome encontrado")
         }else{
-            this.status = StatusTransference.Processing
+            this.mudaStatus(StatusTransference.Processing)
+            console.log(this.status)
         }
-        console.log(this.status);
     }
 
     public statusCpf(cpf: number){
         if(cpf === 11){
-            this.status = StatusTransference.Completed
+            this.mudaStatus(StatusTransference.Completed)
+            console.log(this.status, ",cpf encontrado")
         }else{
-            this.status = StatusTransference.Pendent
+            this.mudaStatus(StatusTransference.Pending)
+            console.log(this.status)
         }
-        console.log(this.status);
+
     }
+
+        //Erro
+    completedMesage(name: string, money: number): void{
+        console.log(`Transference completed, ${money}$ to the ${name} bank`);
+    }
+
+
 }
