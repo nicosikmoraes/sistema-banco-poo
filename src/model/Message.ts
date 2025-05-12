@@ -1,4 +1,4 @@
-import { IMessageEnd } from "./OtherBank";
+import { IMessageEnd } from "./IMessage";
 
 export default class Message implements IMessageEnd {
     completedMessage2(nomeBanco: string): void {
