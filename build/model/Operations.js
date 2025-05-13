@@ -10,6 +10,7 @@ class Operations {
     deposit(amount) {
         this.control.db.setAcessBalance(this.control.db.getAcessBalance() + amount);
         console.log("Balance:" + this.control.db.getAcessBalance());
+        return this.control.db.getAcessBalance();
     }
     withdraw(amount) {
         this.control.db.setAcessBalance(this.control.db.getAcessBalance() - amount);

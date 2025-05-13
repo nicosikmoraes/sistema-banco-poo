@@ -14,7 +14,8 @@ export default class Operations{
 
     public deposit(amount: number){
         this.control.db.setAcessBalance(this.control.db.getAcessBalance() + amount);
-        console.log("Balance:" + this.control.db.getAcessBalance())
+        console.log("Balance:" + this.control.db.getAcessBalance());
+        return this.control.db.getAcessBalance();
     }
 
     public withdraw(amount: number){

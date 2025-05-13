@@ -15,6 +15,10 @@
     "tsyringe": "^4.10.0"
   },
   "devDependencies": {
-    "@types/prompt-sync": "^4.2.3"
+    "@types/jest": "^29.5.14",
+    "@types/prompt-sync": "^4.2.3",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.3.2",
+    "typescript": "^5.8.3"
   }
 }
