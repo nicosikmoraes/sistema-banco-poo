@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const StatusEnum_1 = require("./StatusEnum");
+const StatusEnum_1 = require("../enum/StatusEnum");
 class Operations {
     ;
     constructor(control) {

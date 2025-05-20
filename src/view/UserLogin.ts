@@ -4,6 +4,8 @@ import Withdraw from "./withdraw";
 import MainScreen from "./MainScreen";
 import Deposit from "./Deposit";
 import Transference from "./Transference";
+import Investiment from "./Investiment";
+import { container } from "tsyringe";
 
 export default class UserLogin {
       private prompt = PromptSync();
@@ -11,12 +13,14 @@ export default class UserLogin {
       private withdraw: Withdraw;
       private deposit: Deposit;
       private transference: Transference;
+      private investiment: Investiment;
   
         public constructor(control: MainController){
             this.control = control;
             this.withdraw = new Withdraw(control);
             this.deposit = new Deposit(control);
             this.transference = new Transference(control);
+            this.investiment = new Investiment(0, 0, control);
         }
     
         public enterLogin(){
@@ -29,7 +33,7 @@ export default class UserLogin {
             let continuing: boolean = true;
             while (continuing) {
 
-                let choice = parseInt(this.prompt("\nBalance: "+this.control.db.getAcessBalance()+"\nSelect: \n1. Withdraw \n2. Deposit \n3. transference \n4. Info \n5. Sair \n"));
+                let choice = parseInt(this.prompt("\nBalance: "+this.control.db.getAcessBalance()+"\nSelect: \n1. Withdraw \n2. Deposit \n3. transference \n4. Info \n5. Investir \n6. Sair \n"));
                 switch (choice) {
                     case 1:
                             this.withdraw.withdrawMoney();
@@ -54,8 +58,12 @@ export default class UserLogin {
                             console.log(this.control.db.getAcessBalance());
                         break;
 
-
                     case 5:
+                            this.investiment.investiment();
+                            this.control.db.changeDb(nCpf);
+                        break;
+
+                    case 6:
                         continuing = false;
                         break;
                 

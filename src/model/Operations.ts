@@ -1,5 +1,5 @@
 import MainController from "../controller/MainController";
-import { StatusTransference } from "./StatusEnum";
+import { StatusTransference } from "../enum/StatusEnum";
 
 
 export default class Operations{

@@ -1,5 +1,5 @@
 import MainController from "../controller/MainController";
-import { IMessageEnd } from "../model/IMessage";
+import { IMessageEnd } from "../interface/IMessage";
 import TransferenceSameBank from "./TransfBank";
 
 
