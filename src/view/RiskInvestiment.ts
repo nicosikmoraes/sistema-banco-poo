@@ -2,7 +2,7 @@ import PromptSync from "prompt-sync";
 import MainController from "../controller/MainController";
 import InvestAbstract from "../model/InvestAbstract";
 
-export default class Investiment extends InvestAbstract {
+export default class RiskInvestiment extends InvestAbstract {
     private control: MainController;
     public prompt = PromptSync();
 
@@ -27,11 +27,11 @@ investiment(): void {
         console.log("Valor inválido")
     }else{
 
-       if(this.successRating < 0.4){
+       if(this.successRating < 0.65){
           this.control.db.setAcessBalance(saldo - nAmountGamble);
           console.log("Investimento mal sucedido!")
        }else{
-          this.control.db.setAcessBalance (saldo + (nAmountGamble * this.porcentagemLucro));
+          this.control.db.setAcessBalance (saldo + (nAmountGamble * (this.porcentagemLucro + 0.5)));
           console.log("Investimento bem sucedido!")
            }
            // Valor pós o investimento ser concluido.
@@ -39,6 +39,5 @@ investiment(): void {
     }
 
 
-}
-
+ }
 }
