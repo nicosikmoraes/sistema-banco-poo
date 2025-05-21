@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
 const InvestAbstract_1 = __importDefault(require("../model/InvestAbstract"));
-class Investiment extends InvestAbstract_1.default {
+class RiskInvestiment extends InvestAbstract_1.default {
     constructor(porcentagemLucro, successRating, control) {
         super(porcentagemLucro, successRating);
         this.prompt = (0, prompt_sync_1.default)();
@@ -23,12 +23,12 @@ class Investiment extends InvestAbstract_1.default {
             console.log("Valor inválido");
         }
         else {
-            if (this.successRating < 0.4) {
+            if (this.successRating < 0.65) {
                 this.control.db.setAcessBalance(saldo - nAmountGamble);
                 console.log("Investimento mal sucedido!");
             }
             else {
-                this.control.db.setAcessBalance(saldo + (nAmountGamble * this.porcentagemLucro));
+                this.control.db.setAcessBalance(saldo + (nAmountGamble * (this.porcentagemLucro + 0.5)));
                 console.log("Investimento bem sucedido!");
             }
             // Valor pós o investimento ser concluido.
@@ -36,4 +36,4 @@ class Investiment extends InvestAbstract_1.default {
         }
     }
 }
-exports.default = Investiment;
+exports.default = RiskInvestiment;
