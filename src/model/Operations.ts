@@ -1,10 +1,11 @@
 import MainController from "../controller/MainController";
 import { StatusTransference } from "../enum/StatusEnum";
+import WithdrawError from "../excecao/WithdrawError";
 
 
 export default class Operations{
     private control: MainController;
-    private status: StatusTransference = StatusTransference.Pending;;
+    private status: StatusTransference = StatusTransference.Pending;
 
     public constructor(control: MainController){
         this.control = control;
@@ -13,14 +14,24 @@ export default class Operations{
 
 
     public deposit(amount: number){
-        this.control.db.setAcessBalance(this.control.db.getAcessBalance() + amount);
-        console.log("Balance:" + this.control.db.getAcessBalance());
-        return this.control.db.getAcessBalance();
+        let saldo = this.control.db.getAcessBalance();
+
+        this.control.db.setAcessBalance(saldo + amount);
+        console.log("Balance:" + saldo);
+        return saldo;
     }
 
     public withdraw(amount: number){
-        this.control.db.setAcessBalance(this.control.db.getAcessBalance() - amount);
-        console.log("Balance:" + this.control.db.getAcessBalance())
+        let saldo = this.control.db.getAcessBalance();
+
+        if(saldo < amount){
+            console.log( "insufficient funds, you need to deposit: " + (amount - saldo));
+            throw new WithdrawError("insufficient funds", (amount - saldo));
+            
+        }else{
+            this.control.db.setAcessBalance(saldo - amount);
+            console.log("Balance:" + this.control.db.getAcessBalance())
+        }
     }
 
     public transference(amount: number){

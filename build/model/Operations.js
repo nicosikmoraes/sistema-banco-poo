@@ -1,20 +1,30 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const StatusEnum_1 = require("../enum/StatusEnum");
+const WithdrawError_1 = __importDefault(require("../excecao/WithdrawError"));
 class Operations {
-    ;
     constructor(control) {
         this.status = StatusEnum_1.StatusTransference.Pending;
         this.control = control;
     }
     deposit(amount) {
-        this.control.db.setAcessBalance(this.control.db.getAcessBalance() + amount);
-        console.log("Balance:" + this.control.db.getAcessBalance());
-        return this.control.db.getAcessBalance();
+        let saldo = this.control.db.getAcessBalance();
+        this.control.db.setAcessBalance(saldo + amount);
+        console.log("Balance:" + saldo);
+        return saldo;
     }
     withdraw(amount) {
-        this.control.db.setAcessBalance(this.control.db.getAcessBalance() - amount);
-        console.log("Balance:" + this.control.db.getAcessBalance());
+        if (this.control.db.getAcessBalance() < amount) {
+            console.log("insufficient funds, you need to deposit: " + (amount - this.control.db.getAcessBalance()));
+            throw new WithdrawError_1.default("insufficient funds");
+        }
+        else {
+            this.control.db.setAcessBalance(this.control.db.getAcessBalance() - amount);
+            console.log("Balance:" + this.control.db.getAcessBalance());
+        }
     }
     transference(amount) {
         let account1 = this.control.db.getAcessBalance();

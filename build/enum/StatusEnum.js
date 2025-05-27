@@ -6,4 +6,4 @@ var StatusTransference;
     StatusTransference["Pending"] = "Tranference Pending";
     StatusTransference["Processing"] = "Tranference Processing";
     StatusTransference["Completed"] = "Tranference Completed";
-})(StatusTransference || (exports.StatusTransference = StatusTransference = {}));
+})(StatusTransference = exports.StatusTransference || (exports.StatusTransference = {}));

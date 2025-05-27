@@ -36,7 +36,7 @@ export default class UserLogin {
             let continuing: boolean = true;
             while (continuing) {
 
-                let choice = parseInt(this.prompt("\nBalance: "+this.control.db.getAcessBalance()+"\nSelect: \n1. Withdraw \n2. Deposit \n3. transference \n4. Info \n5. Investir \n6. Investimento arriscado \n7. Sair \n"));
+                let choice = parseInt(this.prompt("\nBalance: "+this.control.db.getAcessBalance()+"\nSelect: \n1. Withdraw \n2. Deposit \n3. transference \n4. Info \n5. Investiment \n6. Risk Investiment \n7. Exit \n"));
                 switch (choice) {
                     case 1:
                             this.withdraw.withdrawMoney();

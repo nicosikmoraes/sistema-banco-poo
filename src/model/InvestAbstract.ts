@@ -6,6 +6,6 @@ export default abstract class InvestAbstract {
         this.porcentagemLucro = porcentagemLucro;
         this.successRating = successRating;
     }
-
+ 
     abstract investiment(): void;
 }
