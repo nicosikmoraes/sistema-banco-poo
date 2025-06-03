@@ -21,6 +21,7 @@ class Investiment extends InvestAbstract_1.default {
         // Verificar se existe saldo suficiente.
         if (nAmountGamble > saldo) {
             console.log("Valor inválido");
+            throw new Error("Insufficient funds");
         }
         else {
             if (this.successRating < 0.4) {

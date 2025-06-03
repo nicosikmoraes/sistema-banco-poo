@@ -26,7 +26,7 @@ export default class Operations{
 
         if(saldo < amount){
             console.log( "insufficient funds, you need to deposit: " + (amount - saldo));
-            throw new WithdrawError("insufficient funds", (amount - saldo));
+            throw new WithdrawError(saldo);
             
         }else{
             this.control.db.setAcessBalance(saldo - amount);

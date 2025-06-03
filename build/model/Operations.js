@@ -17,12 +17,13 @@ class Operations {
         return saldo;
     }
     withdraw(amount) {
-        if (this.control.db.getAcessBalance() < amount) {
-            console.log("insufficient funds, you need to deposit: " + (amount - this.control.db.getAcessBalance()));
-            throw new WithdrawError_1.default("insufficient funds");
+        let saldo = this.control.db.getAcessBalance();
+        if (saldo < amount) {
+            console.log("insufficient funds, you need to deposit: " + (amount - saldo));
+            throw new WithdrawError_1.default(saldo);
         }
         else {
-            this.control.db.setAcessBalance(this.control.db.getAcessBalance() - amount);
+            this.control.db.setAcessBalance(saldo - amount);
             console.log("Balance:" + this.control.db.getAcessBalance());
         }
     }

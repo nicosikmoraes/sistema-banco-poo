@@ -1,3 +1,7 @@
 import MainController from "./controller/MainController";
 
-new MainController();
+try {
+    new MainController();
+} catch (error: any) {
+    console.log("Erro: " +error)    
+}
