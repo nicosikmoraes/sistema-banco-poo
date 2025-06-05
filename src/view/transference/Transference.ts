@@ -1,8 +1,8 @@
 import PromptSync from "prompt-sync";
-import MainController from "../controller/MainController"
+import MainController from "../../controller/MainController"
 import TransferenceSameBank from "./TransfBank";
 import TransferenceOtherBank from "./TranfOtherBank";
-import Message from "../model/Message";
+import Message from "../../model/messages/Message";
 
 
 export default class Transference {

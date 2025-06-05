@@ -1,7 +1,6 @@
 import PromptSync from "prompt-sync";
-import MainController from "../controller/MainController";
-import InvestAbstract from "../model/InvestAbstract";
-
+import MainController from "../../controller/MainController";
+import InvestAbstract from "../../model/abstract_class/InvestAbstract";
 export default class RiskInvestiment extends InvestAbstract {
     private control: MainController;
     public prompt = PromptSync();

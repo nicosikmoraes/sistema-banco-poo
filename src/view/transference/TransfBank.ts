@@ -1,5 +1,5 @@
 import PromptSync from "prompt-sync";
-import MainController from "../controller/MainController"
+import MainController from "../../controller/MainController";
 
 export default class TransferenceSameBank {
 

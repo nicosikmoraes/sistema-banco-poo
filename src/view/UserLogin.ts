@@ -1,12 +1,10 @@
 import PromptSync from "prompt-sync";
 import MainController from "../controller/MainController";
-import Withdraw from "./withdraw";
-import MainScreen from "./MainScreen";
-import Deposit from "./Deposit";
-import Transference from "./Transference";
-import Investiment from "./Investiment";
-import { container } from "tsyringe";
-import RiskInvestiment from "./RiskInvestiment";
+import Withdraw from "./transitions/withdraw";
+import Deposit from "./transitions/Deposit";
+import Transference from "./transference/Transference";
+import Investiment from "./investiments/Investiment";
+import RiskInvestiment from "./investiments/RiskInvestiment";
 
 export default class UserLogin {
       private prompt = PromptSync();

@@ -1,7 +1,7 @@
 import PromptSync from "prompt-sync";
-import MainController from "../controller/MainController";
+import MainController from "../../controller/MainController";
 
-export default class Deposit{
+export default class Withdraw {
     private prompt = PromptSync();
     private control: MainController;
     private newBalance!: number;
@@ -14,9 +14,10 @@ export default class Deposit{
         return this.newBalance;
     }
 
-    public depositMoney(){
-        let amount:string = this.prompt("\nHow much do you want to deposit?");
+    public withdrawMoney(){
+        let amount:string = this.prompt("\nHow much do you want to withdraw?");
         let nAmount: number = Number(amount);
-        this.control.operations.deposit(nAmount);
+        this.control.operations.withdraw(nAmount)
     }
 }
+

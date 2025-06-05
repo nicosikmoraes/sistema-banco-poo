@@ -4,11 +4,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
-const withdraw_1 = __importDefault(require("./withdraw"));
-const Deposit_1 = __importDefault(require("./Deposit"));
-const Transference_1 = __importDefault(require("./Transference"));
-const Investiment_1 = __importDefault(require("./Investiment"));
-const RiskInvestiment_1 = __importDefault(require("./RiskInvestiment"));
+const withdraw_1 = __importDefault(require("./transitions/withdraw"));
+const Deposit_1 = __importDefault(require("./transitions/Deposit"));
+const Transference_1 = __importDefault(require("./transference/Transference"));
+const Investiment_1 = __importDefault(require("./investiments/Investiment"));
+const RiskInvestiment_1 = __importDefault(require("./investiments/RiskInvestiment"));
 class UserLogin {
     constructor(control) {
         this.prompt = (0, prompt_sync_1.default)();
