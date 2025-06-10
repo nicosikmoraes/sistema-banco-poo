@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const StatusEnum_1 = require("../enum/StatusEnum");
-const WithdrawError_1 = __importDefault(require("../excecao/WithdrawError"));
+const WithdrawError_1 = __importDefault(require("../exception/WithdrawError"));
 class Operations {
     constructor(control) {
         this.status = StatusEnum_1.StatusTransference.Pending;

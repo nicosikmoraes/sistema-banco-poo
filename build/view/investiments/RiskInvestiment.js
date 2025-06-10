@@ -16,21 +16,21 @@ class RiskInvestiment extends InvestAbstract_1.default {
         this.porcentagemLucro = Number(porcentagemValor.toFixed(1));
         this.successRating = Math.random();
         let saldo = this.control.db.getAcessBalance();
-        let amountGamble = this.prompt("Digite quantidade que deseja apostar:");
+        let amountGamble = this.prompt("How much do you want to invest?");
         let nAmountGamble = Number(amountGamble);
         // Verificar se existe saldo suficiente.
         if (nAmountGamble > saldo) {
-            console.log("Valor inválido");
+            console.log("Invalid");
             throw new Error("Insufficient funds");
         }
         else {
             if (this.successRating < 0.65) {
                 this.control.db.setAcessBalance(saldo - nAmountGamble);
-                console.log("Investimento mal sucedido!");
+                console.log("Investiment failed!");
             }
             else {
                 this.control.db.setAcessBalance(saldo + (nAmountGamble * (this.porcentagemLucro + 0.5)));
-                console.log("Investimento bem sucedido!");
+                console.log("Investiment was a success!");
             }
             // Valor pós o investimento ser concluido.
             console.log(this.control.db.getAcessBalance());

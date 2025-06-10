@@ -13,8 +13,8 @@ export default class UserRegister {
 
     public addUser(){
         //Esse user é basicamente as informações do meu User.ts
-        let user: User = this.control.getNewUser();
-        let conta: Conta = this.control.getNewAccount();
+        let user: User = this.control.genericController.getNew("User")
+        let conta: Conta = this.control.genericController.getNew("Conta")
         //Pedir ao usuário seus dados de registro.
         let name: string = this.prompt("\nName:\n");
         let SocialNumber: string = this.prompt("\nSocial number:\n", "");
