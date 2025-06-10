@@ -1,6 +1,6 @@
 import MainController from "../controller/MainController";
 import { StatusTransference } from "../enum/StatusEnum";
-import WithdrawError from "../excecao/WithdrawError";
+import WithdrawError from "../exception/WithdrawError";
 
 
 export default class Operations{
