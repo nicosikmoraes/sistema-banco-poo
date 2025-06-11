@@ -32,14 +32,17 @@ export default class Database {
         return this.acessBalance;
     }
 
+    //Atualiza o saldo do usuário.
     public setAcessBalance(newBalance: number){
         this.acessBalance = newBalance
     }
 
+    //Informações do nome do usuário que está logado
     public getAcessName(){
         return this.accessName;
     }
 
+    //Informações do social number do usuário que está logado
     public getAcessSocialNumber(){
         return this.accessSocialNumber;
     }
@@ -66,14 +69,21 @@ export default class Database {
     public listBalance(cpf: number){
         let y: number = 0;
         for(let index = 0; index < this.accountDb.length; index++){
+            
             const element = this.accountDb[index];
             const element2 = this.userDb[index];
+            
             if(cpf == element.getSocialNumber()){
+                    //Mostra os dados da conta que foi logada.
                     console.log(`\n ${element.getName()} \n ${element.getBalance()} \n ${element.getSocialNumber()}`)
+
+                    //Acessando os valores da conta que foi logada.
                     this.acessBalance = element.getBalance();
                     this.accessName = element2.getName();
                     this.accessSocialNumber = element.getSocialNumber();
-            }else{y++;};
+            }else{
+                y++;
+            };
         }
             if(y >= this.accountDb.length){
                     console.log("Not found")
@@ -86,8 +96,11 @@ export default class Database {
     //Muda os valores que foram alterados pelo Withdraw e deposit no Banco de dados
     public changeDb(cpf: number){
         for(let index = 0; index < this.accountDb.length; index++){
+        
             const element = this.accountDb[index];
+        
             if(cpf == element.getSocialNumber()){
+                //Atualiza o saldo da conta.
                 element.setBalance(this.acessBalance);
             }
     }
@@ -96,8 +109,11 @@ export default class Database {
     //Recupero os valores da conta que será tranferida  (recupero apenas o Balance no momento).
     public getAccountToTransference(cpf: number){
         for(let index = 0; index < this.accountDb.length; index++){
+            
             const element = this.accountDb[index];
+            
             if(cpf == element.getSocialNumber()){
+                //Pego o saldo da conta que será transferida.
                 this.account2 = element.getBalance();
             }
         }
@@ -107,15 +123,21 @@ export default class Database {
     public changeTransferenceDb(cpf: number, cpf2:number){
         //Muda valor na primeira conta
         for(let index = 0; index < this.accountDb.length; index++){
+         
             const element = this.accountDb[index];
+         
             if(cpf == element.getSocialNumber()){
+                //Atualiza o saldo da conta.
                 element.setBalance(this.acessBalance);
             }
     }
             //Muda valor na segunda conta
             for(let index = 0; index < this.accountDb.length; index++){
+                
                 const element = this.accountDb[index];
+                
                 if(cpf2 == element.getSocialNumber()){
+                    //Atualiza o saldo da conta que será transferida.
                     element.setBalance(this.account2);
                 }
         }

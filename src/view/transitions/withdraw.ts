@@ -10,13 +10,17 @@ export default class Withdraw {
         this.control = control;
     }
 
+    //Método para ter acesso ao novo saldo após o saque.
     public getNewBalance(){
         return this.newBalance;
     }
 
     public withdrawMoney(){
+        //Pede ao usuário o valor que ele quer saque.
         let amount:string = this.prompt("\nHow much do you want to withdraw?");
         let nAmount: number = Number(amount);
+
+        //Chama a operação de saque no controller.
         this.control.operations.withdraw(nAmount)
     }
 }

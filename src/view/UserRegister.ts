@@ -12,20 +12,23 @@ export default class UserRegister {
     }
 
     public addUser(){
-        //Esse user é basicamente as informações do meu User.ts
+        //Estou criando um novo User e uma nova conta. (Sâo criados usando Tipos Genéricos na classe GenericController)
         let user: User = this.control.getNewUser();
         let conta: Conta = this.control.getNewAccount();
-        //Pedir ao usuário seus dados de registro.
+
+        //Pede ao usuário os dados para registro.
         let name: string = this.prompt("\nName:\n");
         let SocialNumber: string = this.prompt("\nSocial number:\n", "");
-        var NSocialNumber = Number(SocialNumber)
+        var NSocialNumber = Number(SocialNumber)  //Transformando a string em número.
         let balance: string = this.prompt("\nFirst deposit:\n", "");
-        var NBalance = Number(balance)
+        var NBalance = Number(balance) //Transformando a string em número.
+
         //Populando o objeto.
         user.setName(name);
         user.setSocialNumber(NSocialNumber);
         conta.setSocialNumber(NSocialNumber);
         conta.setBalance(NBalance);
+        
         //Armazenar no banco de dados.
         this.control.db.addNewUser(user);
         this.control.db.addNewAcount(conta);

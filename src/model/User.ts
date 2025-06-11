@@ -2,6 +2,7 @@ export default class User {
     private  name!: string;
     protected  socialNumber!: number;
 
+    //Model do User.
 
     public getName(){
         return this.name;

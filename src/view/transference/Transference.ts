@@ -18,6 +18,7 @@ export default class Transference {
             this.trasferenceSameBank = new TransferenceSameBank(control)
         }
 
+        // Método para acessar ao cpf da outra conta.
         public getCpf2(){
             return this.trasferenceSameBank.getCpf2();
         }
@@ -30,13 +31,17 @@ export default class Transference {
                 let choice = parseInt(this.prompt("\n1. Bank Manco \n2. Other bank"));
                 switch (choice) {
                     case 1:
+                        //Chama o método de transferência (Transference). Transfere para uma conta desse sistema
                         this.trasferenceSameBank.transferenceMoney();
-                    continuing = false;
+                    
+                        continuing = false;
                         break;
                             
                     case 2:
+                        //Chama o método de transferência para outro banco. Simula uma transferência para outro banco.
                         this.transferenceOtherBank.transferenceMoney();
-                    continuing = false;
+                    
+                        continuing = false;
                         break;
                 
                     default: 
