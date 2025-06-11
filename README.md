@@ -1,9 +1,7 @@
 # Create by Nicolas Siqueira Moraes
 This project was made to practice Object-oriented programming
 
-It's a bank system, you can register yourself,  login, make deposits, withdraw your money and tranfer to another accounts.
-
-Updates coming soon...
+It's a bank system where you can register yourself,  login, make deposits, withdraw, transfer to anothers accounts and do investiments. Everything at the terminal.
 
 # How to start
   - Clone the repository with `git clone <url>`
@@ -11,7 +9,7 @@ Updates coming soon...
   - Open a terminal in your operation system or on VS Code pointing to the root project
   - Install the dependecies
       - `npm i`
-  - Enter in the build paste
-      - `cd build`
   - Start the application
-      - `node index.js`
+      - `node build/index.js`
+  - If you need to compile use
+      - `tsc` 
