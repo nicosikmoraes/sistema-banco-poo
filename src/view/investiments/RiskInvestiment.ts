@@ -52,10 +52,7 @@ investiment(): void {
        }
        else
        {
-
-          console.log("Investiment failed!")
-       }else{
-
+            // Se a taxa de sucesso for maior ou igual a 0.65, o investimento é bem sucedido.
           this.control.db.setAcessBalance (saldo + (nAmountGamble * (this.porcentagemLucro + 0.5)));
           console.log("Investiment was a success!")
            }
@@ -66,4 +63,5 @@ investiment(): void {
 
 
  }
+}
 }
