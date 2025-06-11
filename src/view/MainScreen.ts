@@ -14,7 +14,7 @@ export default class MainScreen {
         this.control = control;
         this.userRegister = new UserRegister(control);
         this.userLogin = new UserLogin(control)
-        // Vai rodar a tela principal quando for chamado eu acho.
+        // Vai rodar a tela principal quando for chamado.
         this.mainMenu();
     }
 

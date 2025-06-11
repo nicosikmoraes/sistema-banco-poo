@@ -1,4 +1,6 @@
 export default abstract class InvestAbstract {
+    //Abstract class para investimentos
+
     protected porcentagemLucro: number;
     protected successRating: number;    
 
