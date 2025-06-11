@@ -7,9 +7,10 @@ export class GenericController<T> implements IEntity<T> {
         return param
     }
 
+    // Retorna um novo User ou uma nova Conta.
     public getNew(param: T): any{
         if(this.getType(param) === "User"){
-        return new User();  
+            return new User();  
         } 
         
         if(this.getType(param) === "Conta"){
