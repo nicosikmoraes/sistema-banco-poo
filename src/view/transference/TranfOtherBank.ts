@@ -1,5 +1,9 @@
 import MainController from "../../controller/MainController";
+
 import { IMessageEnd } from "../../interface/IMessage";
+
+import { IMessageEnd } from "../../interface/IMessage"
+
 import TransferenceSameBank from "./TransfBank";
 
 

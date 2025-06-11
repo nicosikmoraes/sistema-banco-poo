@@ -23,6 +23,7 @@ investiment(): void {
     // Pega o saldo atual do usuário.
     let saldo: number = this.control.db.getAcessBalance();
 
+
     // Pergunta ao usuário quanto ele deseja investir.
     let amountGamble = this.prompt("Digite quantidade que deseja apostar:");
     let nAmountGamble = Number(amountGamble); // Transforma a string em número.
@@ -31,6 +32,14 @@ investiment(): void {
     if(nAmountGamble > saldo){
         // Se o valor apostado for maior que o saldo, lança um erro.
         console.log("Insufficient funds");
+
+    let amountGamble = this.prompt("How much do you want to invest?");
+    let nAmountGamble = Number(amountGamble);
+
+    // Verificar se existe saldo suficiente.
+    if(nAmountGamble > saldo){
+        console.log("Invalid");
+
         throw new Error("Insufficient funds");
     }else{
 
@@ -38,13 +47,17 @@ investiment(): void {
        if(this.successRating < 0.65){
         // Se a taxa de sucesso for menor que 0.65, o investimento falha. E o usuário perde o valor apostado.
           this.control.db.setAcessBalance(saldo - nAmountGamble);
+
           console.log("Investimento mal sucedido!")
        }
        else
        {
 
+          console.log("Investiment failed!")
+       }else{
+
           this.control.db.setAcessBalance (saldo + (nAmountGamble * (this.porcentagemLucro + 0.5)));
-          console.log("Investimento bem sucedido!")
+          console.log("Investiment was a success!")
            }
            
            // Valor pós o investimento ser concluido.
