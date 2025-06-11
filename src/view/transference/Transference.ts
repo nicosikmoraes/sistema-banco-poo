@@ -30,13 +30,17 @@ export default class Transference {
                 let choice = parseInt(this.prompt("\n1. Bank Manco \n2. Other bank"));
                 switch (choice) {
                     case 1:
+                        //Chamando a classe de Transference do mesmo banco
                         this.trasferenceSameBank.transferenceMoney();
-                    continuing = false;
+                 
+                        continuing = false;
                         break;
                             
                     case 2:
+                    //Chamando a classe de Transference de outro banco
                         this.transferenceOtherBank.transferenceMoney();
-                    continuing = false;
+                     
+                        continuing = false;
                         break;
                 
                     default: 
