@@ -12,6 +12,7 @@ class UserRegister {
     addUser() {
         //Esse user é basicamente as informações do meu User.ts
         let user = this.control.genericController.getNew("User");
+        //Esse conta é basicamente as informações do meu Conta.ts
         let conta = this.control.genericController.getNew("Conta");
         //Pedir ao usuário seus dados de registro.
         let name = this.prompt("\nName:\n");
@@ -27,6 +28,7 @@ class UserRegister {
         //Armazenar no banco de dados.
         this.control.db.addNewUser(user);
         this.control.db.addNewAcount(conta);
+        //Mostrar os dados do usuário e conta.
         console.log(user);
         console.log(conta);
     }

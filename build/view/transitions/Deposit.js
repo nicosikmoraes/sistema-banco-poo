@@ -12,9 +12,12 @@ class Deposit {
     getNewBalance() {
         return this.newBalance;
     }
+    //Método para ter acesso ao novo saldo após o depósito.
     depositMoney() {
+        //Pede ao usuário o valor que ele quer depositar.
         let amount = this.prompt("\nHow much do you want to deposit?");
-        let nAmount = Number(amount);
+        let nAmount = Number(amount); //Transformando a string em número.
+        // Chama a operação de depósito.
         this.control.operations.deposit(nAmount);
     }
 }

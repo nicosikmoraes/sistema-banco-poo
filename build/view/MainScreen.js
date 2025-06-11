@@ -12,7 +12,7 @@ class MainScreen {
         this.control = control;
         this.userRegister = new UserRegister_1.default(control);
         this.userLogin = new UserLogin_1.default(control);
-        // Vai rodar a tela principal quando for chamado eu acho.
+        // Vai rodar a tela principal quando for chamado.
         this.mainMenu();
     }
     //Tela principal

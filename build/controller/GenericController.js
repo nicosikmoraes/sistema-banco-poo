@@ -10,6 +10,7 @@ class GenericController {
     getType(param) {
         return param;
     }
+    // Retorna um novo User ou uma nova Conta.
     getNew(param) {
         if (this.getType(param) === "User") {
             return new User_1.default();

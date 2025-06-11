@@ -65,7 +65,7 @@ export default class Operations{
         if(name.length > 6){
             // Se sim, muda o status da transferência para concluída.
             this.mudaStatus(StatusTransference.Completed)
-            console.log(this.status, ",nome encontrado")
+            console.log(this.status, ",Name Found")
         }
         else
         {
@@ -81,7 +81,7 @@ export default class Operations{
         if(cpf === 11){
             // Se sim, muda o status da transferência para concluída.
             this.mudaStatus(StatusTransference.Completed)
-            console.log(this.status, ",cpf encontrado")
+            console.log(this.status, ",Social Number Found")
         }
         else
         {

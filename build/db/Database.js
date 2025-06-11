@@ -23,12 +23,15 @@ class Database {
     getAcessBalance() {
         return this.acessBalance;
     }
+    // Define o saldo da conta acessada.
     setAcessBalance(newBalance) {
         this.acessBalance = newBalance;
     }
+    // Retorna o nome da conta acessada.
     getAcessName() {
         return this.accessName;
     }
+    // Retorna o número social da conta acessada.
     getAcessSocialNumber() {
         return this.accessSocialNumber;
     }
@@ -54,7 +57,9 @@ class Database {
             const element = this.accountDb[index];
             const element2 = this.userDb[index];
             if (cpf == element.getSocialNumber()) {
+                // Mostrando os dados do usuário e da conta.
                 console.log(`\n ${element.getName()} \n ${element.getBalance()} \n ${element.getSocialNumber()}`);
+                // Atualizando os dados da conta acessada.
                 this.acessBalance = element.getBalance();
                 this.accessName = element2.getName();
                 this.accessSocialNumber = element.getSocialNumber();
@@ -76,6 +81,7 @@ class Database {
         for (let index = 0; index < this.accountDb.length; index++) {
             const element = this.accountDb[index];
             if (cpf == element.getSocialNumber()) {
+                // Atualizando o saldo da conta acessada.
                 element.setBalance(this.acessBalance);
             }
         }
@@ -85,6 +91,7 @@ class Database {
         for (let index = 0; index < this.accountDb.length; index++) {
             const element = this.accountDb[index];
             if (cpf == element.getSocialNumber()) {
+                // Pega o saldo da conta Tranferencia.
                 this.account2 = element.getBalance();
             }
         }
@@ -95,6 +102,7 @@ class Database {
         for (let index = 0; index < this.accountDb.length; index++) {
             const element = this.accountDb[index];
             if (cpf == element.getSocialNumber()) {
+                // Atualizando o saldo da conta acessada.
                 element.setBalance(this.acessBalance);
             }
         }
@@ -102,6 +110,7 @@ class Database {
         for (let index = 0; index < this.accountDb.length; index++) {
             const element = this.accountDb[index];
             if (cpf2 == element.getSocialNumber()) {
+                // Atualizando o saldo da conta acessada.
                 element.setBalance(this.account2);
             }
         }

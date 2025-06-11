@@ -22,7 +22,7 @@ class UserLogin {
     enterLogin() {
         //Perguntando ao usuário o Cpf
         let cpf = this.prompt("\nWhat is your social number?");
-        let nCpf = Number(cpf);
+        let nCpf = Number(cpf); //Transformando a string em número.
         //Vou listar o saldo
         this.control.db.listBalance(nCpf);
         if (this.control.db.acessKey == true) {
@@ -31,28 +31,39 @@ class UserLogin {
                 let choice = parseInt(this.prompt("\nBalance: " + this.control.db.getAcessBalance() + "\nSelect: \n1. Withdraw \n2. Deposit \n3. transference \n4. Info \n5. Investiment \n6. Risk Investiment \n7. Exit \n"));
                 switch (choice) {
                     case 1:
+                        //Chamando a classe de Withdraw
                         this.withdraw.withdrawMoney();
+                        //Atualizando o banco de dados com o novo saldo.
                         this.control.db.changeDb(nCpf);
                         break;
                     case 2:
+                        //Chamando a classe de Deposit
                         this.deposit.depositMoney();
+                        //Atualizando o banco de dados com o novo saldo.
                         this.control.db.changeDb(nCpf);
                         break;
                     case 3:
+                        //Chamando a classe de Transference
                         this.transference.transferenceChoice();
+                        //Atualizando o banco de dados com o novo saldo das duas contas.
                         this.control.db.changeTransferenceDb(nCpf, this.transference.getCpf2());
                         break;
                     case 4:
+                        //Mostrando as informações do usuário.
                         console.log(this.control.db.getAcessName());
                         console.log(this.control.db.getAcessSocialNumber());
                         console.log(this.control.db.getAcessBalance());
                         break;
                     case 5:
+                        //Chamando a classe de Investiment
                         this.investiment.investiment();
+                        //Atualizando o banco de dados com o novo saldo.
                         this.control.db.changeDb(nCpf);
                         break;
                     case 6:
+                        //Chamando a classe de RiskInvestiment
                         this.riskInvestiment.investiment();
+                        //Atualizando o banco de dados com o novo saldo.
                         this.control.db.changeDb(nCpf);
                         break;
                     case 7:
@@ -64,7 +75,6 @@ class UserLogin {
                 }
             }
             console.log("Exit");
-            console.log(this.transference.getCpf2() + " cpf2");
         }
     }
 }
